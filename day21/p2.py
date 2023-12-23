@@ -63,6 +63,7 @@ with open("input.txt") as file:
     while map_dist >= 0:
         if surplus >= max_dist:
             # This means that there are enough moves to reach every reachable cell of the maps of the current distance (map_dist)
+            # So we don't need to loop through distances and see which cells are sufficiently close, since we know they all are
             # Furthermore, this will also apply for all map distances lower than this
             odd_maps_count, even_maps_count = maps_at_or_below_distance(map_dist)
             cells_of_even_parity_count = sum(1 for k in distance_0 if (k[0]+k[1])%2 == 0)
