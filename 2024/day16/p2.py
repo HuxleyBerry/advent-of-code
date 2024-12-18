@@ -63,7 +63,7 @@ def find_shortest_path(grid, start, initial_direction, end):
             parents[(child_pos, child_direction)].append((pos, direction))
     
     possible_ends = [(end, direc) for direc in ((0,1), (0,-1), (1,0), (-1,0)) if (end, direc) in shortest_dist]
-    minimum_cost = min(possible_ends, key=lambda x: shortest_dist[x])
+    minimum_cost = min((shortest_dist[x] for x in possible_ends))
     visited = set((end, direc) for direc in ((0,1), (0,-1), (1,0), (-1,0)) if shortest_dist[(end, direc)] == minimum_cost)
     queue = deque(visited)
     while len(queue) != 0:

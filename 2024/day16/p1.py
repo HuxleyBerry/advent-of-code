@@ -15,23 +15,23 @@ for i, row in enumerate(grid):
 assert start is not None and end is not None
 
 def heuristic(pos, direction, end):
-    manhattan_dist = abs(pos[0] - end[0]) + abs(pos[1] - end[1])
-    differences = (end[0] - pos[0], end[1] - pos[1])
-    directions_required = [((diff//abs(diff),0) if i == 0 else (0, diff//abs(diff))) for i, diff in enumerate(differences) if diff != 0]
-    if len(directions_required) == 1:
-        if directions_required[0] == direction:
-            return manhattan_dist
-        elif directions_required[0] == (-direction[0], -direction[1]):
-            return manhattan_dist + 2000
-        else:
-            return manhattan_dist + 1000
-    elif len(directions_required) == 2:
-        if direction in directions_required:
-            return manhattan_dist + 1000
-        else:
-            return manhattan_dist + 2000
-    else:
-        return 0
+   manhattan_dist = abs(pos[0] - end[0]) + abs(pos[1] - end[1])
+   differences = (end[0] - pos[0], end[1] - pos[1])
+   directions_required = [((diff//abs(diff),0) if i == 0 else (0, diff//abs(diff))) for i, diff in enumerate(differences) if diff != 0]
+   if len(directions_required) == 1:
+      if directions_required[0] == direction:
+         return manhattan_dist
+      elif directions_required[0] == (-direction[0], -direction[1]):
+         return manhattan_dist + 2000
+      else:
+         return manhattan_dist + 1000
+   elif len(directions_required) == 2:
+      if direction in directions_required:
+         return manhattan_dist + 1000
+      else:
+         return manhattan_dist + 2000
+   else:
+      return 0
    
 
 def find_shortest_path(grid, start, initial_direction, end):
