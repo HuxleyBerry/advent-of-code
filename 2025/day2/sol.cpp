@@ -94,7 +94,6 @@ int main(int argc, char** argv) {
         input.emplace_back(std::atol(left.c_str()), std::atol(right.c_str()));
     }
     long count = 0;
-    std::cout << std::boolalpha;
     for (const auto& pair: input) {
         if (std::atoi(argv[1]) == 1) {
             count += countInvalid(pair.first, pair.second, 2);
